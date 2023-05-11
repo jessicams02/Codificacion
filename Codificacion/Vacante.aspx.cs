@@ -14,7 +14,7 @@ namespace Codificacion
         {
             if (!Page.IsPostBack)
             {
-                if (Session["id"] != null)
+                if (Session["id"] != null && Session["id"].ToString() != "0")
                 {
                     txtId.Text = Session["id"].ToString();
                     int id = Convert.ToInt32(Session["id"].ToString());

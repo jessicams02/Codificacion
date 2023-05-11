@@ -25,12 +25,14 @@ namespace Codificacion
                     ddlVacante.DataTextField = "area";
                     ddlVacante.DataValueField = "id";
                     ddlVacante.DataBind();
+                    ddlVacante.Items.Insert(0, new ListItem("Seleccionar", ""));
 
                     ddlProspecto.DataSource = dp;
                     ddlProspecto.DataBind();
                     ddlProspecto.DataTextField = "nombre";
                     ddlProspecto.DataValueField = "id";
                     ddlProspecto.DataBind();
+                    ddlProspecto.Items.Insert(0, new ListItem("Seleccionar", ""));
                 }
                 else
                 {
@@ -66,7 +68,7 @@ namespace Codificacion
                     }
                 }
 
-                if (Session["id"] != null)
+                if (Session["id"] != null && Session["id"].ToString() != "0")
                 {
                     txtId.Text = Session["id"].ToString();
                     int id = Convert.ToInt32(Session["id"].ToString());

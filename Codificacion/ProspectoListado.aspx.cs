@@ -43,6 +43,7 @@ namespace Codificacion
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            Session["id"] = 0;
             Response.Redirect("Prospecto.aspx");
         }
 
@@ -89,7 +90,24 @@ namespace Codificacion
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(
+                if (respuesta.Contains("FK"))
+                {
+                    ScriptManager.RegisterClientScriptBlock(
+                    this,
+                    GetType(),
+                    "Popup",
+                    "Swal.fire({" +
+                        "icon: 'error'," +
+                        "title: 'Error'," +
+                        "text: 'Para eliminar este prospecto debe eliminar las entrevistas vinculadas a este'})"+
+                        ".then((result) => {" +
+                        "window.location.href = 'EntrevistaListado.aspx';" +
+                    "});",
+                    true);
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(
                     this,
                     GetType(),
                     "Popup",
@@ -98,6 +116,7 @@ namespace Codificacion
                         "title: 'Error'," +
                         "text: '" + respuesta + "'})",
                     true);
+                }
             }
         }
     }

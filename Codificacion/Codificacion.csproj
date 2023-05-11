@@ -73,6 +73,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Archivos de la BD\Diagrama bd.png" />
+    <Content Include="Archivos de la BD\StoredProcedures.sql" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -103,6 +105,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Archivos de la BD\Documentación de la Prueba de Codificación.pdf" />
     <None Include="Scripts\jquery-3.6.4.intellisense.js" />
     <Content Include="Scripts\Inputmask\inputmask.es6.js" />
     <Content Include="Scripts\Inputmask\inputmask.js" />

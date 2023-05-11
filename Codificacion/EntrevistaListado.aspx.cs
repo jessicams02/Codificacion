@@ -45,6 +45,7 @@ namespace Codificacion
         }
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
+            Session["id"] = 0;
             Response.Redirect("Entrevista.aspx");
         }
 
@@ -73,7 +74,7 @@ namespace Codificacion
             Conexion c = new Conexion();
 
             string respuesta = c.DeleteEntrevista(id);
-            if (respuesta == "delPro")
+            if (respuesta == "delEnt")
             {
                 ScriptManager.RegisterClientScriptBlock(
                     this,
