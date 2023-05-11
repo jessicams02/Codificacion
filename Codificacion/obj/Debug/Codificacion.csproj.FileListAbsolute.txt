@@ -116,3 +116,7 @@ C:\Users\zayro\source\repos\Codificacion\Codificacion\obj\Debug\Codificacion.csp
 C:\Users\zayro\source\repos\Codificacion\Codificacion\obj\Debug\Codificacion.csproj.CopyComplete
 C:\Users\zayro\source\repos\Codificacion\Codificacion\obj\Debug\Codificacion.dll
 C:\Users\zayro\source\repos\Codificacion\Codificacion\obj\Debug\Codificacion.pdb
+C:\Users\JESSICAMS\source\repos\Codificacion\Codificacion\bin\EntityFramework.dll
+C:\Users\JESSICAMS\source\repos\Codificacion\Codificacion\bin\EntityFramework.SqlServer.dll
+C:\Users\JESSICAMS\source\repos\Codificacion\Codificacion\bin\EntityFramework.xml
+C:\Users\JESSICAMS\source\repos\Codificacion\Codificacion\bin\EntityFramework.SqlServer.xml

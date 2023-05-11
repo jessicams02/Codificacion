@@ -17,7 +17,7 @@
             <div class="container-fluid justify-content-center">
                 <div class="row">
                     <div class="col-1">
-                        <asp:Button ID="btnRegresar" runat="server" Text="← Regresar" class="btn back"/>
+                        <asp:Button ID="btnRegresar" runat="server" Text="← Regresar" class="btn back" onclick="btnRegresar_Click" CausesValidation="false"/>
                     </div>
                 </div>
                 <div class="row">
@@ -25,33 +25,35 @@
                         <h1>Vacante</h1>
                     </div>
                 </div>
-                <!--<div class="row">
-                    <div class="col form-group">
-                        <asp:TextBox ID="txtId" runat="server" Visible="false"></asp:TextBox>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Button" />
-                    </div>
-                </div>-->
-
+                <br />
+                <asp:TextBox ID="txtId" runat="server" Visible="false" Text="0"></asp:TextBox>
                 <div class="row">
                     <div class="col form-group">
                         <asp:Label ID="Label2" runat="server" Text="Área:"></asp:Label>
                         <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" MaxLength="50"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvArea" runat="server" ControlToValidate="txtArea" SetFocusOnError="true" ErrorMessage="Ingresa un área" CssClass="red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col form-group">
                         <asp:Label ID="Label1" runat="server" Text="Sueldo:"></asp:Label>
                         <asp:TextBox ID="txtSueldo" runat="server" CssClass="form-control money"></asp:TextBox>
-                    </div>
-                    <div>
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                        <asp:RequiredFieldValidator ID="rfvSueldo" runat="server" ControlToValidate="txtSueldo" SetFocusOnError="true" ErrorMessage="Ingresa un sueldo" CssClass="red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-
+                <br />
                 <div class="row">
                     <div class="col">
-                        <asp:Button ID="btnGuardar" runat="server" Text="Button" class="btn btn-primary"/>
+                        <asp:Label ID="Label3" runat="server" Text="Activo"></asp:Label>
+                        <asp:CheckBox ID="chbActivo" runat="server" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary" onclick="btnGuardar_Click"/>
                     </div>
                 </div>
             </div>

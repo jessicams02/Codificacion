@@ -15,76 +15,24 @@ namespace Codificacion
         StringBuilder query = new StringBuilder();
 
         #region Vacantes
-        public DataTable ListadoVacantes()
+        public DataTable ListadoVacantes(int id)
         {
             DataTable dt = new DataTable();
 
             query.Clear();
-            //query.AppendLine($"EXEC sp_ListVacante @area = '{area}'");
+            query.AppendLine($"EXEC sp_ListVacantes @id = '{id}'");
 
             try
             {
-
+                SqlCommand cmd = new SqlCommand(query.ToString(), cn);
                 cn.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                dt.Load( rdr );
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception) { throw; }
             finally { cn.Close(); }
 
             return dt;
-
-            /*
-             CREATE PROCEDURE sp_AsignaSellos @cliente varchar(MAX), @numcaja varchar(10), @fechasig smalldatetime, @perasig varchar(50), @traref varchar(20), @traped varchar(15), @color varchar(10), @sello varchar(20) output
-                AS BEGIN
-	                DECLARE @Nsello AS VARCHAR(MAX) = (SELECT TOP 1 numsello 'SELLO FISCAL' FROM SELLOS 
-	                WHERE COLOR = @color AND fechasig IS NULL AND fechareg >= DATEADD(yy, -1, GETDATE())
-	                ORDER BY Cast(Substring(numsello + '0', Patindex('%[0-9]%',numsello + '0'), len(numsello + '0')) As Int))
-	
-	                UPDATE Sellos SET cliente = @cliente, numcaja = @numcaja, fechasig = @fechasig, perasig = @perasig,
-                    traref = @traref, traped = @traped WHERE numsello = @Nsello AND color = @color
-	
-	                SELECT numsello from sellos where numsello = @Nsello
-                END
-             */
-
-            // código para insertar mediante sp
-            /*SqlQuery.AppendLine($"declare @sello varchar(20);");
-            SqlQuery.AppendLine($"EXEC sp_AsignaSellos @cliente = '{tr.Cliente}', @numcaja = '{tr.Caja}', @fechasig = '{fecha}',");
-            SqlQuery.AppendLine($"@perasig = '{tr.Ejecutivo}', @traref = '{tr.Referencia}', @traped = '{tr.Pedimento}', @color = '{tr.Color}', @sello = ''");
-            SqlQuery.AppendLine($"print @sello");
-
-            SqlCommand cmd = new SqlCommand(SqlQuery.ToString(), cnn);
-
-            try
-            {
-                cnn.Open();
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        tr.Sello = dr.GetValue(0).ToString();
-                        tr.Fecha = fecha;
-                    }
-                }
-                else
-                {
-                    tr.Sello = "Error";
-                }
-            }
-            catch (Exception)
-            {
-                tr.Sello = "Error";
-            }
-            finally
-            {
-                cnn.Close();
-            }*/
         }
 
         public string InsertVacante(string area, double sueldo, Boolean activo)
@@ -98,12 +46,9 @@ namespace Codificacion
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
-                respuesta = "InsVac";
+                respuesta = "insVac";
             }
-            catch (Exception x)
-            {
-                respuesta = x.Message;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
 
             return respuesta;
@@ -120,12 +65,9 @@ namespace Codificacion
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
-                respuesta = "UpdVac";
+                respuesta = "updVac";
             }
-            catch (Exception x)
-            {
-                respuesta = x.Message;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
 
             return respuesta;
@@ -144,10 +86,7 @@ namespace Codificacion
                 cmd.ExecuteNonQuery();
                 respuesta = "delVac";
             }
-            catch (Exception x)
-            {
-                respuesta = x.Message;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
 
             return respuesta;
@@ -155,52 +94,65 @@ namespace Codificacion
         #endregion
 
         #region Prospecto 
-        public DataTable ListadoProspectos()
+        public DataTable ListadoProspectos(int id)
         {
             DataTable dt = new DataTable();
+
+            query.Clear();
+            query.AppendLine($"EXEC sp_ListProspectos @id = '{id}'");
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query.ToString(), cn);
+                cn.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                dt.Load(rdr);
+            }
+            catch (Exception) { throw; }
+            finally { cn.Close(); }
+
             return dt;
         }
 
-        public void InsertProspecto(string nombre, string correo, string fechareg)
+        public string InsertProspecto(string nombre, string correo, string fecha)
         {
+            string respuesta;
             query.Clear();
-            query.AppendLine($"EXEC sp_InsertProspecto @nombre = '{nombre}', @sueldo = '{correo}', @fechareg = '{fechareg}'");
+            query.AppendLine($"EXEC sp_InsertProspecto @nombre = '{nombre}', @correo = '{correo}', @fecha = '{fecha}'");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
 
             try
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "insPro";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
 
-        public void UpdateProspecto(int id, string nombre, string correo, string fechareg)
+        public string UpdateProspecto(int id, string nombre, string correo, string fecha)
         {
+            string respuesta;
             query.Clear();
-            query.AppendLine($"EXEC sp_UpdateProspecto @id = '{id}', @nombre = '{nombre}', @correo = '{correo}', @fechareg = '{fechareg}'");
+            query.AppendLine($"EXEC sp_UpdateProspecto @id = '{id}', @nombre = '{nombre}', @correo = '{correo}', @fecha = '{fecha}'");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
 
             try
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "updPro";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
 
-        public void DeleteProspecto(int id)
+        public string DeleteProspecto(int id)
         {
+            string respuesta;
             query.Clear();
             query.AppendLine($"EXEC sp_DeleteProspecto @id = '{id}'");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
@@ -209,44 +161,56 @@ namespace Codificacion
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "delPro";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
         #endregion
 
         #region Entrevista
-        public DataTable ListadoEntrevistas()
+        public DataTable ListadoEntrevistas(int id)
         {
             DataTable dt = new DataTable();
+
+            query.Clear();
+            query.AppendLine($"EXEC sp_ListEntrevistas @id = '{id}'");
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query.ToString(), cn);
+                cn.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                dt.Load(rdr);
+            }
+            catch (Exception) { throw; }
+            finally { cn.Close(); }
+
             return dt;
         }
 
-        public void InsertEntrevista(int idVac, int idPro, string fecha, string notas, Boolean reclutado)
+        public string InsertEntrevista(int idVac, int idPro, string fecha, string notas, Boolean reclutado)
         {
+            string respuesta;
             query.Clear();
-            query.AppendLine($"EXEC sp_InsertVacante @vacante = '{idVac}', @prospecto = '{idPro}', @fecha = '{fecha}', @notas = '{notas}', @reclutado = {reclutado}");
+            query.AppendLine($"EXEC sp_InsertEntrevista @vacante = '{idVac}', @prospecto = '{idPro}', @fecha = '{fecha}', @notas = '{notas}', @reclutado = {reclutado}");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
 
             try
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "insEnt";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
 
-        public void UpdateEntrevista(int id, int idVac, int idPro, string fecha, string notas, Boolean reclutado)
+        public string UpdateEntrevista(int id, int idVac, int idPro, string fecha, string notas, Boolean reclutado)
         {
+            string respuesta;
             query.Clear();
             query.AppendLine($"EXEC sp_UpdateEntrevista @id = '{id}', @vacante = '{idVac}', @prospecto = '{idPro}', @fecha = '{fecha}', @notas = '{notas}', @reclutado = {reclutado}");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
@@ -255,17 +219,16 @@ namespace Codificacion
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "updEnt";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
 
-        public void DeleteEntrevista(int id)
+        public string DeleteEntrevista(int id)
         {
+            string respuesta;
             query.Clear();
             query.AppendLine($"EXEC sp_DeleteEntrevista @id = '{id}'");
             SqlCommand cmd = new SqlCommand(query.ToString(), cn);
@@ -274,13 +237,11 @@ namespace Codificacion
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
+                respuesta = "delEnt";
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception x) { respuesta = x.Message; }
             finally { cn.Close(); }
+            return respuesta;
         }
         #endregion
     }

@@ -42,15 +42,6 @@ namespace Codificacion
         protected global::System.Web.UI.WebControls.TextBox txtId;
 
         /// <summary>
-        /// btnBuscar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
-
-        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -67,6 +58,24 @@ namespace Codificacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// rfvNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+
+        /// <summary>
+        /// RegExValid1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExValid1;
 
         /// <summary>
         /// Label2 control.
@@ -87,6 +96,24 @@ namespace Codificacion
         protected global::System.Web.UI.WebControls.TextBox txtCorreo;
 
         /// <summary>
+        /// rfvCorreo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCorreo;
+
+        /// <summary>
+        /// revCorreo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCorreo;
+
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -103,6 +130,15 @@ namespace Codificacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
+
+        /// <summary>
+        /// rfvFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha;
 
         /// <summary>
         /// btnGuardar control.

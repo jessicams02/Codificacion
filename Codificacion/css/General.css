@@ -6,6 +6,7 @@
     margin-top: 8%;
     margin-left: 15%;
     margin-right: 15%;
+    margin-bottom: 8%;
 }
 
 #form1 {
@@ -24,4 +25,9 @@
 .back:focus {
     border:none;
     background-color: white;
+}
+
+.red {
+    color: red;
+    font-style: oblique;
 }

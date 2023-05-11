@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -86,10 +92,11 @@
     <Content Include="css\General.css" />
     <Content Include="Entrevista.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="ListadoEntrevistas.aspx" />
-    <Content Include="ListadoProspectos.aspx" />
+    <Content Include="EntrevistaListado.aspx" />
+    <Content Include="ProspectoListado.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Prospecto.aspx" />
+    <Content Include="Scripts\AutocompletarCorreo.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -122,19 +129,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEntrevistas.aspx.cs">
-      <DependentUpon>ListadoEntrevistas.aspx</DependentUpon>
+    <Compile Include="EntrevistaListado.aspx.cs">
+      <DependentUpon>EntrevistaListado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListadoEntrevistas.aspx.designer.cs">
-      <DependentUpon>ListadoEntrevistas.aspx</DependentUpon>
+    <Compile Include="EntrevistaListado.aspx.designer.cs">
+      <DependentUpon>EntrevistaListado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListadoProspectos.aspx.cs">
-      <DependentUpon>ListadoProspectos.aspx</DependentUpon>
+    <Compile Include="ProspectoListado.aspx.cs">
+      <DependentUpon>ProspectoListado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListadoProspectos.aspx.designer.cs">
-      <DependentUpon>ListadoProspectos.aspx</DependentUpon>
+    <Compile Include="ProspectoListado.aspx.designer.cs">
+      <DependentUpon>ProspectoListado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
